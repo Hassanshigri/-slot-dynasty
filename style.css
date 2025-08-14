@@ -1,0 +1,29 @@
+.gradient-bg {
+    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%);
+}
+.slot-animation {
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.glow {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+.game-card img {
+    object-fit: cover;
+    width: 100%;
+    height: 192px;
+}
+.input-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.button-hover:hover {
+    background-color: #FFFF99; /* Lighter gold for hover */
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
