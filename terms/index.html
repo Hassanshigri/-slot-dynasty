@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - SlotDynasty Social Casino</title>
+    <meta name="description" content="SlotDynasty’s Terms of Service outline the rules for using our social casino platform, ensuring a fun and fair gaming experience.">
+    <meta name="keywords" content="terms of service, slot dynasty, social casino, user agreement, virtual coins, casino rules, gaming platform, responsible gaming">
+    <link rel="canonical" href="https://slotdynasty.com/terms/">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dynasty-gold': '#FFD700',
+                        'dynasty-purple': '#6B46C1',
+                        'dynasty-dark': '#1F2937',
+                        'dynasty-red': '#DC2626'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Age Verification Modal -->
+    <div id="ageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4">
+            <h2 class="text-2xl font-bold text-dynasty-gold mb-4">Age Verification Required</h2>
+            <p class="mb-6">You must be 18 years or older to access this social casino platform.</p>
+            <div class="flex gap-4">
+                <button onclick="verifyAge(true)" class="bg-dynasty-gold text-black px-6 py-2 rounded font-bold hover:bg-yellow-400">I'm 18+</button>
+                <button onclick="verifyAge(false)" class="bg-gray-600 px-6 py-2 rounded hover:bg-gray-500">Under 18</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 bg-gray-800 p-4 z-40 hidden">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <p class="text-sm mb-4 md:mb-0">We use cookies to enhance your gaming experience. <a href="/cookies/" class="text-dynasty-gold underline">Learn more</a></p>
+            <div class="flex gap-2">
+                <button onclick="acceptCookies()" class="bg-dynasty-gold text-black px-4 py-2 rounded text-sm font-bold">Accept All</button>
+                <button onclick="declineCookies()" class="bg-gray-600 px-4 py-2 rounded text-sm">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-lg">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-dynasty-gold rounded-full flex items-center justify-center">
+                        <span class="text-black font-bold text-xl">SD</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-dynasty-gold">SlotDynasty</h1>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="hover:text-dynasty-gold transition" data-page="home">Home</a>
+                    <a href="/games/" class="hover:text-dynasty-gold transition" data-page="games">Games</a>
+                    <a href="/contact/" class="hover:text-dynasty-gold transition" data-page="contact">Contact</a>
+                    <a href="/responsible-gaming/" class="hover:text-dynasty-gold transition" data-page="responsible-gaming">Responsible Gaming</a>
+                </div>
+
+                <div id="userSection" class="flex items-center space-x-4">
+                    <div id="loggedOutSection">
+                        <a href="/login/" class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition">Login</a>
+                        <button onclick="showRegisterModal()" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition ml-2">Register</button>
+                    </div>
+                    <div id="loggedInSection" class="hidden">
+                        <span id="userWelcome" class="text-dynasty-gold font-bold"></span>
+                        <button onclick="logout()" class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm ml-4">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-2">
+                    <a href="/" class="hover:text-dynasty-gold transition py-2" data-page="home">Home</a>
+                    <a href="/games/" class="hover:text-dynasty-gold transition py-2" data-page="games">Games</a>
+                    <a href="/contact/" class="hover:text-dynasty-gold transition py-2" data-page="contact">Contact</a>
+                    <a href="/responsible-gaming/" class="hover:text-dynasty-gold transition py-2" data-page="responsible-gaming">Responsible Gaming</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Terms of Service Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-8 text-dynasty-gold">Terms of Service</h2>
+                <p class="text-center text-gray-300 mb-12">
+                    Welcome to SlotDynasty, a social casino platform for entertainment purposes only. By accessing or using our services, you agree to abide by these Terms of Service. Please read them carefully to understand your rights and responsibilities.
+                </p>
+                <div class="bg-gray-800 p-8 rounded-lg border-2 border-dynasty-gold card-hover">
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">1. Acceptance of Terms</h3>
+                    <p class="text-gray-300 mb-4">
+                        By registering, logging in, or using SlotDynasty, you agree to these Terms of Service, our <a href="/privacy/" class="text-dynasty-gold underline">Privacy Policy</a>, and our <a href="/cookies/" class="text-dynasty-gold underline">Cookie Policy</a>. If you do not agree, you must not use our platform. These terms apply to all users, whether registered or guests, and govern your interaction with our services, including gameplay, virtual coin purchases, and community features.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">2. Eligibility</h3>
+                    <p class="text-gray-300 mb-4">
+                        You must be at least 18 years old to use SlotDynasty. Upon accessing the platform, you will be prompted to verify your age. Providing false information may result in account suspension or termination. SlotDynasty is a social casino, meaning all gameplay uses virtual coins with no real monetary value, and no real money gambling or payouts are permitted.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">3. Account Registration</h3>
+                    <p class="text-gray-300 mb-4">
+                        To access certain features, such as saving progress or purchasing virtual coins, you must create an account by providing a valid username, email address, and password. You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account. Notify us immediately at <a href="/contact/" class="text-dynasty-gold underline">info@slotdynasty.com</a> if you suspect unauthorized use. We reserve the right to suspend or terminate accounts for violations of these terms.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">4. Virtual Coins</h3>
+                    <p class="text-gray-300 mb-4">
+                        SlotDynasty operates using virtual coins, which have no cash value and cannot be redeemed for real money. Coins can be earned through gameplay, promotions, or purchased for extended play. All transactions are final, and no refunds are provided for virtual coin purchases unless required by law. You agree not to sell, trade, or transfer coins outside the platform, as this violates our policies and may result in account penalties.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">5. User Conduct</h3>
+                    <p class="text-gray-300 mb-4">
+                        You agree to use SlotDynasty for lawful, non-commercial purposes only. Prohibited activities include hacking, cheating, using automated systems (e.g., bots), or engaging in abusive behavior toward other users. We monitor user activity to ensure a fair and safe environment. Violations may lead to temporary or permanent bans without prior notice. Report any issues to our support team via <a href="/contact/" class="text-dynasty-gold underline">Contact</a>.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">6. Intellectual Property</h3>
+                    <p class="text-gray-300 mb-4">
+                        All content on SlotDynasty, including games, graphics, logos, and text, is owned by or licensed to SlotDynasty and protected by copyright and trademark laws. You may not reproduce, distribute, or modify our content without written permission. User-generated content (e.g., usernames, profile comments) grants SlotDynasty a non-exclusive, royalty-free license to use for platform-related purposes.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">7. Limitation of Liability</h3>
+                    <p class="text-gray-300 mb-4">
+                        SlotDynasty provides services on an “as-is” basis. We do not guarantee uninterrupted access or error-free gameplay. We are not liable for any indirect, incidental, or consequential damages arising from your use of the platform, including loss of virtual coins or data. Our liability is limited to the amount paid for virtual coins, where applicable, and only to the extent permitted by law.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">8. Termination</h3>
+                    <p class="text-gray-300 mb-4">
+                        We may suspend or terminate your account for violations of these terms, including but not limited to cheating, fraud, or failure to verify age. Upon termination, you lose access to your account and any virtual coins. You may request account deletion by contacting <a href="/contact/" class="text-dynasty-gold underline">info@slotdynasty.com</a>. We reserve the right to modify or discontinue the platform at any time without liability.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">9. Governing Law</h3>
+                    <p class="text-gray-300 mb-4">
+                        These Terms of Service are governed by the laws of the United States. Any disputes will be resolved in the courts of the United States. If any provision of these terms is found unenforceable, the remaining provisions remain in effect.
+                    </p>
+                    <h3 class="text-2xl font-bold text-dynasty-gold mb-4">10. Contact Us</h3>
+                    <p class="text-gray-300">
+                        For questions or concerns about these Terms of Service, contact our 24/7 support team at <a href="/contact/" class="text-dynasty-gold underline">info@slotdynasty.com</a> or call +1 (555) 123-4567. We are here to assist you.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-dynasty-gold">Join SlotDynasty</h2>
+                <button onclick="closeRegisterModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <form id="registerForm" onsubmit="register(event)">
+                <div class="mb-4">
+                    <label class="block text-sm font-bold mb-2">Username</label>
+                    <input type="text" id="regUsername" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="regEmail" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-bold mb-2">Password</label>
+                    <input type="password" id="regPassword" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center">
+                        <input type="checkbox" required class="mr-2">
+                        <span class="text-sm">I agree to the <a href="/terms/" class="text-dynasty-gold underline">Terms of Service</a> and <a href="/privacy/" class="text-dynasty-gold underline">Privacy Policy</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-3 rounded font-bold text-lg transition button-hover">
+                    🎁 REGISTER & GET 5,000 FREE COINS!
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-dynasty-gold rounded-full flex items-center justify-center">
+                            <span class="text-black font-bold">SD</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dynasty-gold">SlotDynasty</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">The ultimate social casino gaming experience. Play for fun, compete with friends, and enjoy premium slot games.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-dynasty-gold">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="/games/" class="text-gray-400 hover:text-white transition">Games</a></li>
+                        <li><a href="/login/" class="text-gray-400 hover:text-white transition">Login</a></li>
+                        <li><a href="/contact/" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-dynasty-gold">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/privacy/" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="/cookies/" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="/responsible-gaming/" class="text-gray-400 hover:text-white transition">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-dynasty-gold">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>📧 info@slotdynasty.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>🕒 24/7 Support</li>
+                    </ul>
+                    <div class="mt-4">
+                        <h5 class="font-bold mb-2 text-dynasty-gold">Responsible Gaming</h5>
+                        <div class="flex space-x-2">
+                            <a href="javascript:void(0)" class="text-xs bg-gray-700 px-2 py-1 rounded">GamCare</a>
+                            <a href="javascript:void(0)" class="text-xs bg-gray-700 px-2 py-1 rounded">GambleAware</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 SlotDynasty. All rights reserved. This is a social casino platform for entertainment purposes only. No real money gambling or payouts. All coins are virtual and hold no cash value.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
