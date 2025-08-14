@@ -117,10 +117,10 @@ function filterGames(provider) {
     const buttons = document.querySelectorAll('.filter-btn');
     
     buttons.forEach(btn => {
-        btn.className = 'filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded button-hover';
+        btn.className = 'filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded';
     });
     
-    event.target.className = 'filter-btn bg-dynasty-gold text-black px-4 py-2 rounded font-bold button-hover';
+    event.target.className = 'filter-btn bg-dynasty-gold text-black px-4 py-2 rounded font-bold';
     
     cards.forEach(card => {
         if (provider === 'all' || card.classList.contains(provider)) {
@@ -132,43 +132,37 @@ function filterGames(provider) {
 }
 
 function playGame(gameId, gameName, gameUrl) {
-    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-    if (!user) {
-        document.getElementById('loginRequiredModal').classList.remove('hidden');
-        return;
-    }
+    try {
+        const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+        if (!user) {
+            document.getElementById('loginRequiredModal').classList.remove('hidden');
+            return;
+        }
 
-    document.getElementById('gameTitle').textContent = gameName;
-    document.getElementById('gameModal').classList.remove('hidden');
-    
-    setTimeout(() => {
-        document.getElementById('gameFrame').innerHTML = `
-            <iframe 
-                src="${gameUrl}" 
-                class="w-full h-full rounded max-w-full max-h-full" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
-                sandbox="allow-same-origin allow-scripts allow-fullscreen"
-                title="${gameName} Demo"
-            ></iframe>
-        `;
-    }, 2000);
+        const gameFrame = document.getElementById('gameFrame');
+        document.getElementById('gameTitle').textContent = gameName;
+        gameFrame.src = ''; // Clear previous source to avoid loading issues
+        gameFrame.src = gameUrl; // Set new game URL
+        document.getElementById('gameModal').classList.remove('hidden');
+
+        // Add error handling for iframe loading
+        gameFrame.onerror = () => {
+            console.error(`Failed to load game: ${gameName} at ${gameUrl}`);
+            alert('Failed to load the game. Please try again later or contact support.');
+            closeGame();
+        };
+
+        console.log(`Loading game: ${gameName} with URL: ${gameUrl}`);
+    } catch (error) {
+        console.error('Error in playGame:', error);
+        alert('An error occurred while loading the game. Please try again.');
+    }
 }
 
 function closeGame() {
     document.getElementById('gameModal').classList.add('hidden');
-    document.getElementById('gameFrame').innerHTML = `
-        <div class="text-center h-full flex items-center justify-center">
-            <div>
-                <div class="text-6xl mb-4">🎰</div>
-                <h4 class="text-2xl font-bold text-dynasty-gold mb-2">Game Loading...</h4>
-                <p class="text-gray-400">Preparing your gaming experience</p>
-                <div class="mt-4">
-                    <div class="animate-spin w-8 h-8 border-4 border-dynasty-gold border-t-transparent rounded-full mx-auto"></div>
-                </div>
-            </div>
-        </div>
-    `;
+    const gameFrame = document.getElementById('gameFrame');
+    gameFrame.src = ''; // Clear iframe source to stop the game
 }
 
 function closeLoginModal() {
