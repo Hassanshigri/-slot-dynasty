@@ -47,6 +47,23 @@ function checkUserStatus() {
     }
 }
 
+function highlightActiveLink() {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll('nav a[data-page]');
+    links.forEach(link => {
+        const page = link.getAttribute('data-page');
+        link.classList.remove('text-dynasty-gold');
+        if (
+            (page === 'home' && currentPath === '/') ||
+            (page === 'games' && currentPath.startsWith('/games/')) ||
+            (page === 'contact' && currentPath.startsWith('/contact/')) ||
+            (page === 'responsible-gaming' && currentPath.startsWith('/responsible-gaming/'))
+        ) {
+            link.classList.add('text-dynasty-gold');
+        }
+    });
+}
+
 function showRegisterModal() {
     document.getElementById('registerModal').classList.remove('hidden');
 }
@@ -141,4 +158,5 @@ document.getElementById('mobileMenuBtn').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     checkAgeVerification();
     checkUserStatus();
+    highlightActiveLink();
 });
