@@ -8,6 +8,7 @@
     <meta name="keywords" content="social casino, slot games, virtual coins, online slots, casino games, free slots, slot dynasty, gaming platform, social gaming, casino entertainment">
     <link rel="canonical" href="https://slotdynasty.com/">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,21 +24,6 @@
             }
         }
     </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%);
-        }
-        .slot-animation {
-            animation: spin 2s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .glow {
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
-    </style>
 </head>
 <body class="bg-gray-900 text-white">
     <!-- Age Verification Modal -->
@@ -59,6 +45,31 @@
             <div class="flex gap-2">
                 <button onclick="acceptCookies()" class="bg-dynasty-gold text-black px-4 py-2 rounded text-sm font-bold">Accept All</button>
                 <button onclick="declineCookies()" class="bg-gray-600 px-4 py-2 rounded text-sm">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Modal -->
+    <div id="gameModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-lg w-full max-w-6xl mx-4 h-5/6">
+            <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                <h3 id="gameTitle" class="text-xl font-bold text-dynasty-gold"></h3>
+                <button onclick="closeGame()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="p-4 h-full">
+                <iframe id="gameFrame" class="w-full h-full bg-gray-900 rounded" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Required Modal -->
+    <div id="loginRequiredModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4">
+            <h2 class="text-2xl font-bold text-dynasty-gold mb-4">Login Required</h2>
+            <p class="mb-6">You need to login to play our premium slot games and earn virtual coins!</p>
+            <div class="flex gap-4">
+                <a href="/login/" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-6 py-2 rounded font-bold flex-1 text-center">Login</a>
+                <button onclick="closeLoginModal()" class="bg-gray-600 hover:bg-gray-500 px-6 py-2 rounded flex-1">Cancel</button>
             </div>
         </div>
     </div>
@@ -157,6 +168,89 @@
         </div>
     </section>
 
+    <!-- Featured Games Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-dynasty-gold">Featured Games</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Wanted Dead or a Wild -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                    <img src="/assets/games/wanted-dead-or-a-wild.jpg" alt="Wanted Dead or a Wild slot game" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Wanted Dead or a Wild</h3>
+                        <p class="text-gray-400 text-sm mb-3">Hacksaw Gaming</p>
+                        <button onclick="playGame('wanted-dead', 'Wanted Dead or a Wild', 'https://gamdom.com/providers/Hacksaw-Gaming/wanted-dead-or-a-wild')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                            🎮 PLAY NOW
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sweet Bonanza -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                    <img src="/assets/games/sweet-bonanza.jpg" alt="Sweet Bonanza slot game" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Sweet Bonanza</h3>
+                        <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
+                        <button onclick="playGame('sweet-bonanza', 'Sweet Bonanza', 'https://gamdom.com/providers/Pragmatic-Play/sweet-bonanza')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                            🎮 PLAY NOW
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Deadwood -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                    <img src="/assets/games/deadwood.jpg" alt="Deadwood slot game" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Deadwood</h3>
+                        <p class="text-gray-400 text-sm mb-3">Nolimit City</p>
+                        <button onclick="playGame('deadwood', 'Deadwood', 'https://gamdom.com/providers/Nolimit-City/deadwood')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                            🎮 PLAY NOW
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Crazy Time -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                    <img src="/assets/games/crazy-time.jpg" alt="Crazy Time live game" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Crazy Time</h3>
+                        <p class="text-gray-400 text-sm mb-3">Evolution Gaming</p>
+                        <button onclick="playGame('crazy-time', 'Crazy Time', 'https://gamdom.com/providers/Evolution-Gaming/crazy-time')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                            🎮 PLAY NOW
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Starlight Princess -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                    <img src="/assets/games/starlight-princess.jpg" alt="Starlight Princess slot game" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Starlight Princess</h3>
+                        <p class="text-gray-400 text-sm mb-3">Peter & Sons</p>
+                        <button onclick="playGame('starlight-princess', 'Starlight Princess', 'https://gamdom.com/providers/Peter-and-Sons/starlight-princess')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                            🎮 PLAY NOW
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Gates of Olympus -->
+                <div class="game-card bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                    <img src="/assets/games/gates-of-olympus.jpg" alt="Gates of Olympus slot game" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Gates of Olympus</h3>
+                        <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
+                        <button onclick="playGame('gates-of-olympus', 'Gates of Olympus', 'https://gamdom.com/providers/Pragmatic-Play/gates-of-olympus')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                            🎮 PLAY NOW
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="/games/" class="bg-dynasty-purple hover:bg-purple-700 px-6 py-3 rounded-lg font-bold text-lg transition">View All Games</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="py-16 bg-gray-800">
         <div class="container mx-auto px-4">
@@ -183,6 +277,16 @@
                     <p class="text-gray-300">Play anywhere, anytime on any device</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-dynasty-gold">About Us</h2>
+            <p class="text-center text-gray-300 max-w-3xl mx-auto">
+                SlotDynasty is a premier social casino platform dedicated to providing a fun and safe gaming environment for players around the world. Our purpose is to offer an entertaining experience with premium slot games using virtual coins that have no cash value. We focus on social interaction, competition, and weekly new content to keep the excitement alive, all without any real money gambling.
+            </p>
         </div>
     </section>
 
@@ -350,114 +454,18 @@
                     <div class="mt-4">
                         <h5 class="font-bold mb-2 text-dynasty-gold">Responsible Gaming</h5>
                         <div class="flex space-x-2">
-                            <a href="https://www.gamcare.org.uk/" target="_blank" class="text-xs bg-gray-700 px-2 py-1 rounded">GamCare</a>
-                            <a href="https://www.gambleaware.org/" target="_blank" class="text-xs bg-gray-700 px-2 py-1 rounded">GambleAware</a>
+                            <a href="javascript:void(0)" class="text-xs bg-gray-700 px-2 py-1 rounded">GamCare</a>
+                            <a href="javascript:void(0)" class="text-xs bg-gray-700 px-2 py-1 rounded">GambleAware</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; 2024 SlotDynasty. All rights reserved. This is a social casino platform for entertainment purposes only. No real money gambling or payouts. All coins are virtual and hold no cash value.</p>
+                <p>&copy; 2025 SlotDynasty. All rights reserved. This is a social casino platform for entertainment purposes only. No real money gambling or payouts. All coins are virtual and hold no cash value.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Age verification
-        function checkAgeVerification() {
-            const ageVerified = localStorage.getItem('ageVerified');
-            if (!ageVerified) {
-                document.getElementById('ageModal').classList.remove('hidden');
-            } else {
-                checkCookieConsent();
-            }
-        }
-
-        function verifyAge(isOver18) {
-            if (isOver18) {
-                localStorage.setItem('ageVerified', 'true');
-                document.getElementById('ageModal').classList.add('hidden');
-                checkCookieConsent();
-            } else {
-                alert('You must be 18 or older to access this site.');
-                window.location.href = 'https://www.google.com';
-            }
-        }
-
-        // Cookie consent
-        function checkCookieConsent() {
-            const cookieConsent = localStorage.getItem('cookieConsent');
-            if (!cookieConsent) {
-                document.getElementById('cookieConsent').classList.remove('hidden');
-            }
-        }
-
-        function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'accepted');
-            document.getElementById('cookieConsent').classList.add('hidden');
-        }
-
-        function declineCookies() {
-            localStorage.setItem('cookieConsent', 'declined');
-            document.getElementById('cookieConsent').classList.add('hidden');
-        }
-
-        // User authentication
-        function checkUserStatus() {
-            const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
-            if (user) {
-                document.getElementById('loggedOutSection').classList.add('hidden');
-                document.getElementById('loggedInSection').classList.remove('hidden');
-                document.getElementById('userWelcome').textContent = `Welcome, ${user.username} • ${user.coins.toLocaleString()} Coins`;
-            }
-        }
-
-        function showRegisterModal() {
-            document.getElementById('registerModal').classList.remove('hidden');
-        }
-
-        function closeRegisterModal() {
-            document.getElementById('registerModal').classList.add('hidden');
-        }
-
-        function register(event) {
-            event.preventDefault();
-            const username = document.getElementById('regUsername').value;
-            const email = document.getElementById('regEmail').value;
-            const password = document.getElementById('regPassword').value;
-
-            // Simulate registration
-            const user = {
-                username: username,
-                email: email,
-                coins: 5000,
-                registrationDate: new Date().toISOString()
-            };
-
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            closeRegisterModal();
-            checkUserStatus();
-            
-            // Show success message
-            alert(`🎉 Welcome to SlotDynasty, ${username}! You've received 5,000 free coins to get started!`);
-        }
-
-        function logout() {
-            localStorage.removeItem('currentUser');
-            location.reload();
-        }
-
-        // Mobile menu
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            checkAgeVerification();
-            checkUserStatus();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
