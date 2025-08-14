@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SlotDynasty Social Casino</title>
+    <meta name="description" content="Login to your SlotDynasty account and continue your social casino gaming adventure. Access your virtual coins and premium slot games.">
+    <meta name="keywords" content="login, slot dynasty, social casino, account access, virtual coins, slot games, casino login, gaming platform">
+    <link rel="canonical" href="https://slotdynasty.com/login/">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dynasty-gold': '#FFD700',
+                        'dynasty-purple': '#6B46C1',
+                        'dynasty-dark': '#1F2937'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-lg">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-dynasty-gold rounded-full flex items-center justify-center">
+                        <span class="text-black font-bold text-xl">SD</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-dynasty-gold">SlotDynasty</h1>
+                </a>
+                <a href="/" class="text-gray-400 hover:text-white">← Back to Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Form -->
+    <div class="flex items-center justify-center min-h-screen py-12">
+        <div class="max-w-md w-full mx-4">
+            <div class="bg-gray-800 rounded-lg shadow-xl p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-dynasty-gold mb-2">Welcome Back!</h2>
+                    <p class="text-gray-400">Login to continue your gaming adventure</p>
+                </div>
+
+                <form id="loginForm" onsubmit="login(event)">
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">Username or Email</label>
+                        <input type="text" id="loginUsername" required 
+                               class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">Password</label>
+                        <input type="password" id="loginPassword" required 
+                               class="w-full px-4 py-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm text-gray-400">Remember me</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-3 rounded-lg font-bold text-lg transition mb-4">
+                        🎰 LOGIN & PLAY
+                    </button>
+                </form>
+
+                <div class="text-center">
+                    <p class="text-gray-400 mb-4">Don't have an account?</p>
+                    <button onclick="showRegisterModal()" 
+                            class="w-full bg-dynasty-purple hover:bg-purple-700 py-3 rounded-lg font-bold transition">
+                        🎁 REGISTER FOR 5,000 FREE COINS
+                    </button>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-700 text-center">
+                    <p class="text-xs text-gray-500">
+                        By logging in, you agree to our 
+                        <a href="/terms/" class="text-dynasty-gold underline">Terms of Service</a> and 
+                        <a href="/privacy/" class="text-dynasty-gold underline">Privacy Policy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-dynasty-gold">Join SlotDynasty</h2>
+                <button onclick="closeRegisterModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <form id="registerForm" onsubmit="register(event)">
+                <div class="mb-4">
+                    <label class="block text-sm font-bold mb-2">Username</label>
+                    <input type="text" id="regUsername" required class="w-full px-3 py-2 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="regEmail" required class="w-full px-3 py-2 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-bold mb-2">Password</label>
+                    <input type="password" id="regPassword" required class="w-full px-3 py-2 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center">
+                        <input type="checkbox" required class="mr-2">
+                        <span class="text-sm">I agree to the <a href="/terms/" class="text-dynasty-gold underline">Terms of Service</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-3 rounded font-bold text-lg transition">
+                    🎁 REGISTER & GET 5,000 FREE COINS!
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Simulate login (in real app, this would validate against a database)
+            const user = {
+                username: username,
+                email: username.includes('@') ? username : `${username}@example.com`,
+                coins: Math.floor(Math.random() * 50000) + 5000,
+                loginDate: new Date().toISOString()
+            };
+
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            alert(`🎉 Welcome back, ${username}! You have ${user.coins.toLocaleString()} coins available.`);
+            window.location.href = '/games/';
+        }
+
+        function showRegisterModal() {
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function register(event) {
+            event.preventDefault();
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+
+            const user = {
+                username: username,
+                email: email,
+                coins: 5000,
+                registrationDate: new Date().toISOString()
+            };
+
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            closeRegisterModal();
+            alert(`🎉 Welcome to SlotDynasty, ${username}! You've received 5,000 free coins!`);
+            window.location.href = '/games/';
+        }
+
+        // Check if already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (user) {
+                window.location.href = '/games/';
+            }
+        });
+    </script>
+</body>
+</html>

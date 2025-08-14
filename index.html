@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlotDynasty - Premium Social Casino Gaming Experience</title>
+    <meta name="description" content="Join SlotDynasty for the ultimate social casino experience. Play premium slots, win virtual coins, and compete with players worldwide. Register now for 5,000 free coins!">
+    <meta name="keywords" content="social casino, slot games, virtual coins, online slots, casino games, free slots, slot dynasty, gaming platform, social gaming, casino entertainment">
+    <link rel="canonical" href="https://slotdynasty.com/">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dynasty-gold': '#FFD700',
+                        'dynasty-purple': '#6B46C1',
+                        'dynasty-dark': '#1F2937',
+                        'dynasty-red': '#DC2626'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%);
+        }
+        .slot-animation {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .glow {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Age Verification Modal -->
+    <div id="ageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4">
+            <h2 class="text-2xl font-bold text-dynasty-gold mb-4">Age Verification Required</h2>
+            <p class="mb-6">You must be 18 years or older to access this social casino platform.</p>
+            <div class="flex gap-4">
+                <button onclick="verifyAge(true)" class="bg-dynasty-gold text-black px-6 py-2 rounded font-bold hover:bg-yellow-400">I'm 18+</button>
+                <button onclick="verifyAge(false)" class="bg-gray-600 px-6 py-2 rounded hover:bg-gray-500">Under 18</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 bg-gray-800 p-4 z-40 hidden">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <p class="text-sm mb-4 md:mb-0">We use cookies to enhance your gaming experience. <a href="/cookies/" class="text-dynasty-gold underline">Learn more</a></p>
+            <div class="flex gap-2">
+                <button onclick="acceptCookies()" class="bg-dynasty-gold text-black px-4 py-2 rounded text-sm font-bold">Accept All</button>
+                <button onclick="declineCookies()" class="bg-gray-600 px-4 py-2 rounded text-sm">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-lg">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-dynasty-gold rounded-full flex items-center justify-center">
+                        <span class="text-black font-bold text-xl">SD</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-dynasty-gold">SlotDynasty</h1>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="hover:text-dynasty-gold transition">Home</a>
+                    <a href="/games/" class="hover:text-dynasty-gold transition">Games</a>
+                    <a href="/contact/" class="hover:text-dynasty-gold transition">Contact</a>
+                    <a href="/responsible-gaming/" class="hover:text-dynasty-gold transition">Responsible Gaming</a>
+                </div>
+
+                <div id="userSection" class="flex items-center space-x-4">
+                    <div id="loggedOutSection">
+                        <a href="/login/" class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition">Login</a>
+                        <button onclick="showRegisterModal()" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition ml-2">Register</button>
+                    </div>
+                    <div id="loggedInSection" class="hidden">
+                        <span id="userWelcome" class="text-dynasty-gold font-bold"></span>
+                        <button onclick="logout()" class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm ml-4">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-2">
+                    <a href="/" class="hover:text-dynasty-gold transition py-2">Home</a>
+                    <a href="/games/" class="hover:text-dynasty-gold transition py-2">Games</a>
+                    <a href="/contact/" class="hover:text-dynasty-gold transition py-2">Contact</a>
+                    <a href="/responsible-gaming/" class="hover:text-dynasty-gold transition py-2">Responsible Gaming</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-5xl md:text-7xl font-bold mb-6">
+                    Welcome to <span class="text-dynasty-gold">SlotDynasty</span>
+                </h2>
+                <p class="text-xl md:text-2xl mb-8 text-gray-300">
+                    The Ultimate Social Casino Experience
+                </p>
+                
+                <div class="bg-dynasty-red text-white px-6 py-3 rounded-full inline-block mb-8 animate-pulse">
+                    🎰 LIMITED TIME OFFER - Register Now!
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-gray-800 p-6 rounded-lg glow">
+                        <div class="text-4xl mb-4">🎁</div>
+                        <h3 class="text-xl font-bold text-dynasty-gold mb-2">5,000 FREE COINS</h3>
+                        <p>Get started with 5,000 virtual coins when you register today!</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <div class="text-4xl mb-4">🎮</div>
+                        <h3 class="text-xl font-bold text-dynasty-gold mb-2">Premium Games</h3>
+                        <p>Access 50+ premium slot games from top providers</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <div class="text-4xl mb-4">🏆</div>
+                        <h3 class="text-xl font-bold text-dynasty-gold mb-2">Compete & Win</h3>
+                        <p>Climb the leaderboards and unlock exclusive features</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center">
+                    <button onclick="showRegisterModal()" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-8 py-4 rounded-lg font-bold text-xl transition glow block w-full md:w-auto">
+                        🚀 REGISTER NOW - GET 5,000 COINS FREE!
+                    </button>
+                    <a href="/games/" class="bg-dynasty-purple hover:bg-purple-700 px-8 py-4 rounded-lg font-bold text-xl transition block w-full md:w-auto text-center">
+                        🎰 EXPLORE GAMES
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-dynasty-gold">Why Choose SlotDynasty?</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-2">100% Safe</h3>
+                    <p class="text-gray-300">No real money involved - play for fun and entertainment only</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">🎲</div>
+                    <h3 class="text-xl font-bold mb-2">New Games Weekly</h3>
+                    <p class="text-gray-300">Exciting new games added every week from top providers</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">👥</div>
+                    <h3 class="text-xl font-bold mb-2">Social Gaming</h3>
+                    <p class="text-gray-300">Connect with players worldwide and compete on leaderboards</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold mb-2">Mobile Friendly</h3>
+                    <p class="text-gray-300">Play anywhere, anytime on any device</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-dynasty-gold">What Players Say</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-dynasty-gold rounded-full flex items-center justify-center text-black font-bold">M</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Mike Johnson</h4>
+                            <div class="text-dynasty-gold">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Amazing selection of games! I love the daily bonuses and the competitive leaderboards. Best social casino I've played!"</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-dynasty-gold rounded-full flex items-center justify-center text-black font-bold">S</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Sarah Chen</h4>
+                            <div class="text-dynasty-gold">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"The graphics are incredible and the games run so smoothly. Plus, getting 5,000 free coins to start was awesome!"</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-dynasty-gold rounded-full flex items-center justify-center text-black font-bold">D</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">David Rodriguez</h4>
+                            <div class="text-dynasty-gold">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Safe, fun, and addictive! I play every day and love competing with friends. Highly recommend SlotDynasty!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-dynasty-gold">🏆 Top Players This Week</h2>
+            <div class="max-w-2xl mx-auto bg-gray-900 rounded-lg overflow-hidden">
+                <div class="bg-dynasty-purple p-4">
+                    <h3 class="text-xl font-bold text-center">Weekly Leaderboard</h3>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-dynasty-gold text-black rounded">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-3">🥇</span>
+                                <span class="font-bold">CasinoKing2024</span>
+                            </div>
+                            <span class="font-bold">2,847,500 coins</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-3">🥈</span>
+                                <span class="font-bold">SlotMaster99</span>
+                            </div>
+                            <span class="font-bold">2,156,800 coins</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-3">🥉</span>
+                                <span class="font-bold">LuckySpinner</span>
+                            </div>
+                            <span class="font-bold">1,923,400 coins</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                            <div class="flex items-center">
+                                <span class="text-xl mr-3">4️⃣</span>
+                                <span class="font-bold">JackpotHunter</span>
+                            </div>
+                            <span class="font-bold">1,678,200 coins</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-700 rounded">
+                            <div class="flex items-center">
+                                <span class="text-xl mr-3">5️⃣</span>
+                                <span class="font-bold">ReelWinner</span>
+                            </div>
+                            <span class="font-bold">1,445,900 coins</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-dynasty-gold">Join SlotDynasty</h2>
+                <button onclick="closeRegisterModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <form id="registerForm" onsubmit="register(event)">
+                <div class="mb-4">
+                    <label class="block text-sm font-bold mb-2">Username</label>
+                    <input type="text" id="regUsername" required class="w-full px-3 py-2 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="regEmail" required class="w-full px-3 py-2 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-bold mb-2">Password</label>
+                    <input type="password" id="regPassword" required class="w-full px-3 py-2 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center">
+                        <input type="checkbox" required class="mr-2">
+                        <span class="text-sm">I agree to the <a href="/terms/" class="text-dynasty-gold underline">Terms of Service</a> and <a href="/privacy/" class="text-dynasty-gold underline">Privacy Policy</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-3 rounded font-bold text-lg transition">
+                    🎁 REGISTER & GET 5,000 FREE COINS!
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-dynasty-gold rounded-full flex items-center justify-center">
+                            <span class="text-black font-bold">SD</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dynasty-gold">SlotDynasty</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">The ultimate social casino gaming experience. Play for fun, compete with friends, and enjoy premium slot games.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-dynasty-gold">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="/games/" class="text-gray-400 hover:text-white transition">Games</a></li>
+                        <li><a href="/login/" class="text-gray-400 hover:text-white transition">Login</a></li>
+                        <li><a href="/contact/" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-dynasty-gold">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/privacy/" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="/cookies/" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="/responsible-gaming/" class="text-gray-400 hover:text-white transition">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-dynasty-gold">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>📧 info@slotdynasty.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>🕒 24/7 Support</li>
+                    </ul>
+                    <div class="mt-4">
+                        <h5 class="font-bold mb-2 text-dynasty-gold">Responsible Gaming</h5>
+                        <div class="flex space-x-2">
+                            <a href="https://www.gamcare.org.uk/" target="_blank" class="text-xs bg-gray-700 px-2 py-1 rounded">GamCare</a>
+                            <a href="https://www.gambleaware.org/" target="_blank" class="text-xs bg-gray-700 px-2 py-1 rounded">GambleAware</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2024 SlotDynasty. All rights reserved. This is a social casino platform for entertainment purposes only. No real money gambling or payouts. All coins are virtual and hold no cash value.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Age verification
+        function checkAgeVerification() {
+            const ageVerified = localStorage.getItem('ageVerified');
+            if (!ageVerified) {
+                document.getElementById('ageModal').classList.remove('hidden');
+            } else {
+                checkCookieConsent();
+            }
+        }
+
+        function verifyAge(isOver18) {
+            if (isOver18) {
+                localStorage.setItem('ageVerified', 'true');
+                document.getElementById('ageModal').classList.add('hidden');
+                checkCookieConsent();
+            } else {
+                alert('You must be 18 or older to access this site.');
+                window.location.href = 'https://www.google.com';
+            }
+        }
+
+        // Cookie consent
+        function checkCookieConsent() {
+            const cookieConsent = localStorage.getItem('cookieConsent');
+            if (!cookieConsent) {
+                document.getElementById('cookieConsent').classList.remove('hidden');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieConsent').classList.add('hidden');
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieConsent').classList.add('hidden');
+        }
+
+        // User authentication
+        function checkUserStatus() {
+            const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (user) {
+                document.getElementById('loggedOutSection').classList.add('hidden');
+                document.getElementById('loggedInSection').classList.remove('hidden');
+                document.getElementById('userWelcome').textContent = `Welcome, ${user.username} • ${user.coins.toLocaleString()} Coins`;
+            }
+        }
+
+        function showRegisterModal() {
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+        }
+
+        function register(event) {
+            event.preventDefault();
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+
+            // Simulate registration
+            const user = {
+                username: username,
+                email: email,
+                coins: 5000,
+                registrationDate: new Date().toISOString()
+            };
+
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            closeRegisterModal();
+            checkUserStatus();
+            
+            // Show success message
+            alert(`🎉 Welcome to SlotDynasty, ${username}! You've received 5,000 free coins to get started!`);
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            location.reload();
+        }
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAgeVerification();
+            checkUserStatus();
+        });
+    </script>
+</body>
+</html>

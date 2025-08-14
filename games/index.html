@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Slot Games - SlotDynasty Social Casino</title>
+    <meta name="description" content="Play 50+ premium slot games from top providers including Hacksaw Gaming, Pragmatic Play, and Evolution Gaming. Free social casino gaming experience.">
+    <meta name="keywords" content="slot games, hacksaw gaming, pragmatic play, evolution gaming, nolimit city, social casino, free slots, virtual coins, online slots">
+    <link rel="canonical" href="https://slotdynasty.com/games/">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dynasty-gold': '#FFD700',
+                        'dynasty-purple': '#6B46C1',
+                        'dynasty-dark': '#1F2937'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="bg-gray-800 shadow-lg">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-dynasty-gold rounded-full flex items-center justify-center">
+                        <span class="text-black font-bold text-xl">SD</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-dynasty-gold">SlotDynasty</h1>
+                </a>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="hover:text-dynasty-gold transition">Home</a>
+                    <a href="/games/" class="text-dynasty-gold">Games</a>
+                    <a href="/contact/" class="hover:text-dynasty-gold transition">Contact</a>
+                </div>
+
+                <div id="userSection" class="flex items-center space-x-4">
+                    <div id="loggedOutSection">
+                        <a href="/login/" class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition">Login to Play</a>
+                    </div>
+                    <div id="loggedInSection" class="hidden">
+                        <span id="userWelcome" class="text-dynasty-gold font-bold"></span>
+                        <button onclick="logout()" class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm ml-4">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Games Section -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-dynasty-gold mb-4">🎰 Premium Slot Games</h2>
+            <p class="text-xl text-gray-300">Choose from 50+ exciting slot games from top providers</p>
+        </div>
+
+        <!-- Provider Filter -->
+        <div class="mb-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="filterGames('all')" class="filter-btn bg-dynasty-gold text-black px-4 py-2 rounded font-bold">All Games</button>
+                <button onclick="filterGames('hacksaw')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Hacksaw Gaming</button>
+                <button onclick="filterGames('pragmatic')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Pragmatic Play</button>
+                <button onclick="filterGames('nolimit')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Nolimit City</button>
+                <button onclick="filterGames('evolution')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Evolution Gaming</button>
+                <button onclick="filterGames('peter')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Peter & Sons</button>
+            </div>
+        </div>
+
+        <!-- Games Grid -->
+        <div id="gamesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Hacksaw Gaming Games -->
+            <div class="game-card hacksaw bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🔥 WANTED DEAD</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Wanted Dead or a Wild</h3>
+                    <p class="text-gray-400 text-sm mb-3">Hacksaw Gaming</p>
+                    <button onclick="playGame('wanted-dead', 'Wanted Dead or a Wild')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-card hacksaw bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">💎 CHAOS CREW</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Chaos Crew</h3>
+                    <p class="text-gray-400 text-sm mb-3">Hacksaw Gaming</p>
+                    <button onclick="playGame('chaos-crew', 'Chaos Crew')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-card hacksaw bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🍀 HAND OF GOLD</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Hand of Gold</h3>
+                    <p class="text-gray-400 text-sm mb-3">Hacksaw Gaming</p>
+                    <button onclick="playGame('hand-of-gold', 'Hand of Gold')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pragmatic Play Games -->
+            <div class="game-card pragmatic bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">⚡ GATES OF OLYMPUS</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Gates of Olympus</h3>
+                    <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
+                    <button onclick="playGame('gates-olympus', 'Gates of Olympus')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-card pragmatic bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-yellow-600 to-yellow-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🍭 SWEET BONANZA</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Sweet Bonanza</h3>
+                    <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
+                    <button onclick="playGame('sweet-bonanza', 'Sweet Bonanza')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-card pragmatic bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🔥 THE DOG HOUSE</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">The Dog House</h3>
+                    <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
+                    <button onclick="playGame('dog-house', 'The Dog House')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <!-- Nolimit City Games -->
+            <div class="game-card nolimit bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-red-700 to-black flex items-center justify-center">
+                    <span class="text-2xl font-bold">💀 DEADWOOD</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Deadwood</h3>
+                    <p class="text-gray-400 text-sm mb-3">Nolimit City</p>
+                    <button onclick="playGame('deadwood', 'Deadwood')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-card nolimit bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-purple-700 to-pink-700 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🎭 MENTAL</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Mental</h3>
+                    <p class="text-gray-400 text-sm mb-3">Nolimit City</p>
+                    <button onclick="playGame('mental', 'Mental')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <!-- Evolution Gaming Games -->
+            <div class="game-card evolution bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-green-700 to-green-900 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🎰 CRAZY TIME</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Crazy Time</h3>
+                    <p class="text-gray-400 text-sm mb-3">Evolution Gaming</p>
+                    <button onclick="playGame('crazy-time', 'Crazy Time')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-card evolution bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-red-700 to-red-900 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🎲 MONOPOLY LIVE</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Monopoly Live</h3>
+                    <p class="text-gray-400 text-sm mb-3">Evolution Gaming</p>
+                    <button onclick="playGame('monopoly-live', 'Monopoly Live')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <!-- Peter & Sons Games -->
+            <div class="game-card peter bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🌟 STARLIGHT</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Starlight Princess</h3>
+                    <p class="text-gray-400 text-sm mb-3">Peter & Sons</p>
+                    <button onclick="playGame('starlight', 'Starlight Princess')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-card peter bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition">
+                <div class="h-48 bg-gradient-to-br from-teal-600 to-teal-800 flex items-center justify-center">
+                    <span class="text-2xl font-bold">🏴‍☠️ PIRATE GOLD</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">Pirate Gold Deluxe</h3>
+                    <p class="text-gray-400 text-sm mb-3">Peter & Sons</p>
+                    <button onclick="playGame('pirate-gold', 'Pirate Gold Deluxe')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
+                        🎮 PLAY NOW
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Modal -->
+    <div id="gameModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-lg w-full max-w-6xl mx-4 h-5/6">
+            <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                <h3 id="gameTitle" class="text-xl font-bold text-dynasty-gold"></h3>
+                <button onclick="closeGame()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="p-4 h-full">
+                <div id="gameFrame" class="w-full h-full bg-gray-900 rounded flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🎰</div>
+                        <h4 class="text-2xl font-bold text-dynasty-gold mb-2">Game Loading...</h4>
+                        <p class="text-gray-400">Preparing your gaming experience</p>
+                        <div class="mt-4">
+                            <div class="animate-spin w-8 h-8 border-4 border-dynasty-gold border-t-transparent rounded-full mx-auto"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Required Modal -->
+    <div id="loginRequiredModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4">
+            <h2 class="text-2xl font-bold text-dynasty-gold mb-4">Login Required</h2>
+            <p class="mb-6">You need to login to play our premium slot games and earn virtual coins!</p>
+            <div class="flex gap-4">
+                <a href="/login/" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-6 py-2 rounded font-bold flex-1 text-center">Login</a>
+                <button onclick="closeLoginModal()" class="bg-gray-600 hover:bg-gray-500 px-6 py-2 rounded flex-1">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkUserStatus() {
+            const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (user) {
+                document.getElementById('loggedOutSection').classList.add('hidden');
+                document.getElementById('loggedInSection').classList.remove('hidden');
+                document.getElementById('userWelcome').textContent = `Welcome, ${user.username} • ${user.coins.toLocaleString()} Coins`;
+            }
+        }
+
+        function filterGames(provider) {
+            const cards = document.querySelectorAll('.game-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Reset button styles
+            buttons.forEach(btn => {
+                btn.className = 'filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded';
+            });
+            
+            // Highlight active button
+            event.target.className = 'filter-btn bg-dynasty-gold text-black px-4 py-2 rounded font-bold';
+            
+            cards.forEach(card => {
+                if (provider === 'all' || card.classList.contains(provider)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function playGame(gameId, gameName) {
+            const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (!user) {
+                document.getElementById('loginRequiredModal').classList.remove('hidden');
+                return;
+            }
+
+            document.getElementById('gameTitle').textContent = gameName;
+            document.getElementById('gameModal').classList.remove('hidden');
+            
+            // Simulate game loading
+            setTimeout(() => {
+                document.getElementById('gameFrame').innerHTML = `
+                    <div class="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded flex flex-col items-center justify-center">
+                        <div class="text-center mb-8">
+                            <h4 class="text-3xl font-bold text-dynasty-gold mb-4">${gameName}</h4>
+                            <p class="text-gray-400">Demo Mode - Social Casino Game</p>
+                        </div>
+                        <div class="grid grid-cols-5 gap-2 mb-8">
+                            <div class="w-16 h-16 bg-dynasty-gold rounded flex items-center justify-center text-2xl animate-pulse">🍒</div>
+                            <div class="w-16 h-16 bg-dynasty-purple rounded flex items-center justify-center text-2xl animate-pulse">💎</div>
+                            <div class="w-16 h-16 bg-dynasty-gold rounded flex items-center justify-center text-2xl animate-pulse">🍀</div>
+                            <div class="w-16 h-16 bg-dynasty-purple rounded flex items-center justify-center text-2xl animate-pulse">⭐</div>
+                            <div class="w-16 h-16 bg-dynasty-gold rounded flex items-center justify-center text-2xl animate-pulse">💰</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <button onclick="spinSlots()" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-8 py-3 rounded-lg font-bold text-xl">
+                                🎰 SPIN (100 coins)
+                            </button>
+                            <button onclick="closeGame()" class="bg-gray-600 hover:bg-gray-500 px-6 py-3 rounded-lg">
+                                Exit Game
+                            </button>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-dynasty-gold font-bold">Your Balance: ${user.coins.toLocaleString()} coins</p>
+                        </div>
+                    </div>
+                `;
+            }, 2000);
+        }
+
+        function spinSlots() {
+            const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+            if (user.coins < 100) {
+                alert('Insufficient coins! You need at least 100 coins to spin.');
+                return;
+            }
+
+            // Deduct coins
+            user.coins -= 100;
+            
+            // Random win chance
+            const winChance = Math.random();
+            let winAmount = 0;
+            
+            if (winChance > 0.7) {
+                winAmount = Math.floor(Math.random() * 1000) + 200;
+                user.coins += winAmount;
+                alert(`🎉 WINNER! You won ${winAmount} coins!`);
+            } else {
+                alert('Try again! Better luck next spin!');
+            }
+            
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            checkUserStatus();
+            
+            // Update balance in game
+            const balanceElement = document.querySelector('.text-dynasty-gold.font-bold');
+            if (balanceElement) {
+                balanceElement.textContent = `Your Balance: ${user.coins.toLocaleString()} coins`;
+            }
+        }
+
+        function closeGame() {
+            document.getElementById('gameModal').classList.add('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginRequiredModal').classList.add('hidden');
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            location.reload();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserStatus();
+        });
+    </script>
+</body>
+</html>
