@@ -24,16 +24,27 @@
             }
         }
     </script>
+    <style>
+        /* Ensure iframe fits within modal */
+        #gameModal .h-full {
+            height: calc(100% - 4rem); /* Adjust for header height */
+        }
+        #gameFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
     <!-- Age Verification Modal -->
     <div id="ageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 border-2 border-dynasty-gold card-hover">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 border-2 border-dynasty-gold">
             <h2 class="text-2xl font-bold text-dynasty-gold mb-4">Age Verification Required</h2>
             <p class="mb-6">You must be 18 years or older to access this social casino platform.</p>
             <div class="flex gap-4">
-                <button onclick="verifyAge(true)" class="bg-dynasty-gold text-black px-6 py-2 rounded font-bold hover:bg-yellow-400 button-hover">I'm 18+</button>
-                <button onclick="verifyAge(false)" class="bg-gray-600 px-6 py-2 rounded hover:bg-gray-500 button-hover">Under 18</button>
+                <button onclick="verifyAge(true)" class="bg-dynasty-gold text-black px-6 py-2 rounded font-bold hover:bg-yellow-400">I'm 18+</button>
+                <button onclick="verifyAge(false)" class="bg-gray-600 px-6 py-2 rounded hover:bg-gray-500">Under 18</button>
             </div>
         </div>
     </div>
@@ -43,8 +54,8 @@
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
             <p class="text-sm mb-4 md:mb-0">We use cookies to enhance your gaming experience. <a href="/cookies/" class="text-dynasty-gold underline">Learn more</a></p>
             <div class="flex gap-2">
-                <button onclick="acceptCookies()" class="bg-dynasty-gold text-black px-4 py-2 rounded text-sm font-bold button-hover">Accept All</button>
-                <button onclick="declineCookies()" class="bg-gray-600 px-4 py-2 rounded text-sm button-hover">Decline</button>
+                <button onclick="acceptCookies()" class="bg-dynasty-gold text-black px-4 py-2 rounded text-sm font-bold">Accept All</button>
+                <button onclick="declineCookies()" class="bg-gray-600 px-4 py-2 rounded text-sm">Decline</button>
             </div>
         </div>
     </div>
@@ -69,12 +80,12 @@
 
                 <div id="userSection" class="flex items-center space-x-4">
                     <div id="loggedOutSection">
-                        <a href="/login/" class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition button-hover">Login</a>
-                        <button onclick="showRegisterModal()" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition button-hover ml-2">Register</button>
+                        <a href="/login/" class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition">Login</a>
+                        <button onclick="showRegisterModal()" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition ml-2">Register</button>
                     </div>
                     <div id="loggedInSection" class="hidden">
                         <span id="userWelcome" class="text-dynasty-gold font-bold"></span>
-                        <button onclick="logout()" class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm button-hover ml-4">Logout</button>
+                        <button onclick="logout()" class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm ml-4">Logout</button>
                     </div>
                 </div>
 
@@ -108,197 +119,184 @@
         <!-- Provider Filter -->
         <div class="mb-8">
             <div class="flex flex-wrap justify-center gap-4">
-                <button onclick="filterGames('all')" class="filter-btn bg-dynasty-gold text-black px-4 py-2 rounded font-bold button-hover">All Games</button>
-                <button onclick="filterGames('hacksaw')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded button-hover">Hacksaw Gaming</button>
-                <button onclick="filterGames('pragmatic')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded button-hover">Pragmatic Play</button>
-                <button onclick="filterGames('evolution')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded button-hover">Evolution Gaming</button>
-                <button onclick="filterGames('peter')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded button-hover">Peter & Sons</button>
-                <button onclick="filterGames('nolimit')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded button-hover">Nolimit City</button>
+                <button onclick="filterGames('all')" class="filter-btn bg-dynasty-gold text-black px-4 py-2 rounded font-bold">All Games</button>
+                <button onclick="filterGames('hacksaw')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Hacksaw Gaming</button>
+                <button onclick="filterGames('pragmatic')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Pragmatic Play</button>
+                <button onclick="filterGames('evolution')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Evolution Gaming</button>
+                <button onclick="filterGames('peter')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Peter & Sons</button>
+                <button onclick="filterGames('nolimit')" class="filter-btn bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Nolimit City</button>
             </div>
         </div>
 
         <!-- Games Grid -->
         <div id="gamesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- Hacksaw Gaming Games -->
-            <div class="game-card hacksaw bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card hacksaw bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/joker-bombs.png" alt="Joker Bombs" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Joker Bombs</h3>
                     <p class="text-gray-400 text-sm mb-3">Hacksaw Gaming</p>
-                    <button onclick="playGame('joker-bombs', 'Joker Bombs', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1117&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('joker-bombs', 'Joker Bombs', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1117&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
-            <div class="game-card hacksaw bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card hacksaw bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/chaos-crew-2.jpg" alt="Chaos Crew 2" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Chaos Crew 2</h3>
                     <p class="text-gray-400 text-sm mb-3">Hacksaw Gaming</p>
-                    <button onclick="playGame('chaos-crew-2', 'Chaos Crew 2', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1352&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('chaos-crew-2', 'Chaos Crew 2', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1352&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
-            <div class="game-card hacksaw bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card hacksaw bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/hand-of-anubis.jpg" alt="Hand of Anubis" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Hand of Anubis</h3>
                     <p class="text-gray-400 text-sm mb-3">Hacksaw Gaming</p>
-                    <button onclick="playGame('hand-of-anubis', 'Hand of Anubis', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1164&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('hand-of-anubis', 'Hand of Anubis', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1164&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
             <!-- Pragmatic Play Games -->
-            <div class="game-card pragmatic bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card pragmatic bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/starlight-princess.jpg" alt="Starlight Princess" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Starlight Princess</h3>
                     <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
-                    <button onclick="playGame('starlight-princess', 'Starlight Princess', 'https://demogamesfree.aplkutuybu.net/gs2c/openGame.do?gameSymbol=vs20starlight&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('starlight-princess', 'Starlight Princess', 'https://demogamesfree.aplkutuybu.net/gs2c/openGame.do?gameSymbol=vs20starlight&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
-            <div class="game-card pragmatic bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card pragmatic bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/the-dog-house.png" alt="The Dog House" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">The Dog House</h3>
                     <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
-                    <button onclick="playGame('the-dog-house', 'The Dog House', 'https://demogamesfree.aplkutuybu.net/gs2c/openGame.do?gameSymbol=vs20doghouse&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('the-dog-house', 'The Dog House', 'https://demogamesfree.aplkutuybu.net/gs2c/openGame.do?gameSymbol=vs20doghouse&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
-            <div class="game-card pragmatic bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card pragmatic bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/gates-of-olympus.jpg" alt="Gates of Olympus" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Gates of Olympus</h3>
                     <p class="text-gray-400 text-sm mb-3">Pragmatic Play</p>
-                    <button onclick="playGame('gates-of-olympus', 'Gates of Olympus', 'https://demogamesfree.aplkutuybu.net/gs2c/openGame.do?gameSymbol=vs20olympgate&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('gates-of-olympus', 'Gates of Olympus', 'https://demogamesfree.aplkutuybu.net/gs2c/openGame.do?gameSymbol=vs20olympgate&lang=en&cur=USD&lobbyUrl=https://gamdom.com/casino&stylename=gmdm_gamdom&jurisdiction=99&isGameUrlApiCalled=true')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
             <!-- Evolution Gaming Games -->
-            <div class="game-card evolution bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card evolution bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/dork-unit.jpg" alt="Dork Unit" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Dork Unit</h3>
                     <p class="text-gray-400 text-sm mb-3">Evolution Gaming</p>
-                    <button onclick="playGame('dork-unit', 'Dork Unit', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1172&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('dork-unit', 'Dork Unit', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1172&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
-            <div class="game-card evolution bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card evolution bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/rotten.jpg" alt="Rotten" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Rotten</h3>
                     <p class="text-gray-400 text-sm mb-3">Evolution Gaming</p>
-                    <button onclick="playGame('rotten', 'Rotten', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1209&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('rotten', 'Rotten', 'https://d2q0k52vlk25jc.cloudfront.net/launcher/static-launcher.html?gameid=1209&channel=desktop&language=en&currency=USD&partner=gamdom_prod&mode=demo&token=&lobbyurl=http%3A%2F%2Fgamdom.com/casino')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
             <!-- Peter & Sons Games -->
-            <div class="game-card peter bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card peter bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/sands-of-destiny.jpg" alt="Sands of Destiny" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Sands of Destiny</h3>
                     <p class="text-gray-400 text-sm mb-3">Peter & Sons</p>
-                    <button onclick="playGame('sands-of-destiny', 'Sands of Destiny', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.wxYoERVLAiObaf83Hiwq0o7pyiCaUXSRj00FzgA7SLb6uPWQjhcz35Ischk.z_ukMiyxsZwZA-Db.AM5yHRrWhIWOdZQDd-piBdqhdK3jSdSIsLRn58KTRQNu4ml2Pyi-eWiM1drk1CJ5Xp3Ov0OqW-p3On4kcbPoCSPOfVy7_TJIT5eYXeWLKksuRnJMJ9osQfKVkEUaAJKUlsHDpFn7j4alpXH_ucr8ZVv-c-PHtJ0yOZ14Upuc0YtrHZaSM8ymFGW8NmVKZMK3tV9FAa0lkksK4z3PsLpPJcdxEJ_wOQpe7FdRUdNnGc5DTDp7qKhksXMj0Cdz4Pwcpot8YIpWPqPFa-Z1fa8xol3Qgc8_mRu8D-zUeXJfcOtWp94zDucT55fUWzNsarPxnkOJy0qiBPx9XSHPtjfUbyAflsudy4zTBC0KQecSr053HQmI8x4I9es3evmKmAGsNMs2Aqo5qwhBYqvFJSiv5_Pzk1tOkfgkVSycEjXSL2hj1_LKqaY8UQoWglyB5QSC6AjJ7lTyXWJflLO6yK11a5RYNhC6hjNW56wlQVL6dpE.YAGoiPij20jaaYQLorvu5A&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('sands-of-destiny', 'Sands of Destiny', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.wxYoERVLAiObaf83Hiwq0o7pyiCaUXSRj00FzgA7SLb6uPWQjhcz35Ischk.z_ukMiyxsZwZA-Db.AM5yHRrWhIWOdZQDd-piBdqhdK3jSdSIsLRn58KTRQNu4ml2Pyi-eWiM1drk1CJ5Xp3Ov0OqW-p3On4kcbPoCSPOfVy7_TJIT5eYXeWLKksuRnJMJ9osQfKVkEUaAJKUlsHDpFn7j4alpXH_ucr8ZVv-c-PHtJ0yOZ14Upuc0YtrHZaSM8ymFGW8NmVKZMK3tV9FAa0lkksK4z3PsLpPJcdxEJ_wOQpe7FdRUdNnGc5DTDp7qKhksXMj0Cdz4Pwcpot8YIpWPqPFa-Z1fa8xol3Qgc8_mRu8D-zUeXJfcOtWp94zDucT55fUWzNsarPxnkOJy0qiBPx9XSHPtjfUbyAflsudy4zTBC0KQecSr053HQmI8x4I9es3evmKmAGsNMs2Aqo5qwhBYqvFJSiv5_Pzk1tOkfgkVSycEjXSL2hj1_LKqaY8UQoWglyB5QSC6AjJ7lTyXWJflLO6yK11a5RYNhC6hjNW56wlQVL6dpE.YAGoiPij20jaaYQLorvu5A&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
-            <div class="game-card peter bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card peter bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/coin-blox.jpg" alt="Coin Blox" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Coin Blox</h3>
                     <p class="text-gray-400 text-sm mb-3">Peter & Sons</p>
-                    <button onclick="playGame('coin-blox', 'Coin Blox', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.oeAq18cy_GgyWryHrdq4j3fQm_GZW_WNS3A9Mq-erc5RbjbK6zW7UBQ687k.PYSHY3QZtQXypm6Y.YNq0BZ5sBRSH_zjj0jPzmmqasaWmCI2t28HATGMkZUWmAP6hmEGAdU99pRr4DD9L8SgDF4ZG9RGxtbYwwPHU8feaR6aro7KXINShnpGCnyYzPrXZqPPtQA4ItPQXc_m-H_kLdeEa09wefmPkvULmAbJ6avwD_QH04JpWgs50WQhfrQMuSAo_-RXa7h34yR1l0shxPE_RPA4R5LJwwKnN0rMCGgF_Hfh1vSc0ICCbXhAA_pgwfZrHzJRPIWULNMeRH8klEQ33eKE-L0CZKYFwimiATJL9JS0Wx-b22eq4nkbNjlSzGLCtrR93788EYksKA21GRyhTjY8l6xhdK8n09WdOwP5GjC5KoBDQmFfr7Mb-Hsp3N7bvrvQvekRtiZYAMC632t_NjLtPHNCMbwigxvHZY1F4ufBqZEl8PzmXPfs-zNoOpWfSm0cEZgAEOQz30eqD0SG29RO8hHTZ9Y_TboUA-90fDiaTr0s.3FHqAbMjapHWkOxEyqUrDQ&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('coin-blox', 'Coin Blox', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.oeAq18cy_GgyWryHrdq4j3fQm_GZW_WNS3A9Mq-erc5RbjbK6zW7UBQ687k.PYSHY3QZtQXypm6Y.YNq0BZ5sBRSH_zjj0jPzmmqasaWmCI2t28HATGMkZUWmAP6hmEGAdU99pRr4DD9L8SgDF4ZG9RGxtbYwwPHU8feaR6aro7KXINShnpGCnyYzPrXZqPPtQA4ItPQXc_m-H_kLdeEa09wefmPkvULmAbJ6avwD_QH04JpWgs50WQhfrQMuSAo_-RXa7h34yR1l0shxPE_RPA4R5LJwwKnN0rMCGgF_Hfh1vSc0ICCbXhAA_pgwfZrHzJRPIWULNMeRH8klEQ33eKE-L0CZKYFwimiATJL9JS0Wx-b22eq4nkbNjlSzGLCtrR93788EYksKA21GRyhTjY8l6xhdK8n09WdOwP5GjC5KoBDQmFfr7Mb-Hsp3N7bvrvQvekRtiZYAMC632t_NjLtPHNCMbwigxvHZY1F4ufBqZEl8PzmXPfs-zNoOpWfSm0cEZgAEOQz30eqD0SG29RO8hHTZ9Y_TboUA-90fDiaTr0s.3FHqAbMjapHWkOxEyqUrDQ&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
             <!-- Nolimit City Games -->
-            <div class="game-card nolimit bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card nolimit bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/the-crypt.jpg" alt="The Crypt" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">The Crypt</h3>
                     <p class="text-gray-400 text-sm mb-3">Nolimit City</p>
-                    <button onclick="playGame('the-crypt', 'The Crypt', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.CxA36C4Q9GwNctdUOVYV-GxSLmlZb0HeT0zmu3keSYED1SLtmMJs-UurwD8.mVnaOKT7ZF1Cf5C6.nT1VRbRB15ptvEOobl6ZGJp2mk_eh6JlGWF0ySQ7C3SMNwAiIKyA5Ahp9wmSPaTohaRHgGvx4bnH_Gcr6cmccDCD4-xY8X8jDYxlTxzwPut6It_vM7ZFgH1CyUhgPBMNngb-uT0ZKYnCVzXHFaIiohEP_R3TTvG6PUc_2W9ntVvF-r2kFXwN1jzGEcwVKhpFMy8q0BpPshL--zl5mLXFMvmHysCTiCdIDqHhqX3fMZNRBWBlSu6abnIS_KajFUedjHgZxeBNieI6IDzLWvOpr8eBwy0qqeOIuDEJ2ZFAlvaJ807cZoPz0SueyXcXVrUTvnylbXW2ZCDsw5AvM2P7B3tl-lj97tot32e50KC_-2ZqBbrTHDwvpkZnOhZRA7H4P2IxrAlzdXkG0f3kLpe_0C2z87RxT0tKl53D958xstUUNfHTLO8cWlL1XIZFSlTdQcqefjc8F1p6I8zNfDnKU2diaJfbJFnPKQ.4-8Qnb5YpEmgyPiplj2SRQ&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('the-crypt', 'The Crypt', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.CxA36C4Q9GwNctdUOVYV-GxSLmlZb0HeT0zmu3keSYED1SLtmMJs-UurwD8.mVnaOKT7ZF1Cf5C6.nT1VRbRB15ptvEOobl6ZGJp2mk_eh6JlGWF0ySQ7C3SMNwAiIKyA5Ahp9wmSPaTohaRHgGvx4bnH_Gcr6cmccDCD4-xY8X8jDYxlTxzwPut6It_vM7ZFgH1CyUhgPBMNngb-uT0ZKYnCVzXHFaIiohEP_R3TTvG6PUc_2W9ntVvF-r2kFXwN1jzGEcwVKhpFMy8q0BpPshL--zl5mLXFMvmHysCTiCdIDqHhqX3fMZNRBWBlSu6abnIS_KajFUedjHgZxeBNieI6IDzLWvOpr8eBwy0qqeOIuDEJ2ZFAlvaJ807cZoPz0SueyXcXVrUTvnylbXW2ZCDsw5AvM2P7B3tl-lj97tot32e50KC_-2ZqBbrTHDwvpkZnOhZRA7H4P2IxrAlzdXkG0f3kLpe_0C2z87RxT0tKl53D958xstUUNfHTLO8cWlL1XIZFSlTdQcqefjc8F1p6I8zNfDnKU2diaJfbJFnPKQ.4-8Qnb5YpEmgyPiplj2SRQ&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
 
-            <div class="game-card nolimit bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden card-hover">
+            <div class="game-card nolimit bg-gray-800 rounded-lg border-2 border-dynasty-gold overflow-hidden">
                 <img src="/assets/games/fire-in-the-hole-xbomb.png" alt="Fire in the Hole xBomb" class="h-48 w-full object-cover">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-2">Fire in the Hole xBomb</h3>
                     <p class="text-gray-400 text-sm mb-3">Nolimit City</p>
-                    <button onclick="playGame('fire-in-the-hole-xbomb', 'Fire in the Hole xBomb', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.x_hEOruODoRklQYEcCdXVVBqgl-tG09bFH3A5WZLVm796trnCv_K-hWm3Pk.tTWbY8RJaWBKM3fL.aIvf4iXpVLOtLFVbeB97akO8jOfai3tTGcUN4pBLjr2nYuSoVfKSEMmoKfGUKWAdB3O-BuoOSyHzTZvrQZW0e_QctiKX3t0ecyZnoS1bOAGRzMhPiOezcamGsNmGnzraXylDDbSamATo54lcYIPiUd5KV0DRBPMu8RT40gS6uSWvuJR1--f9BxSs4-kvoB6w8puJvjD-AHgf2sV_RkJOD_yk9X8k9V4y2_ObR5mMuMztBOcs2nuSKfgBBsB-e50q9gotGnDRC4g4YBnC_bzznGqGHP1Oso8LNFOFdgPz5TYpW_0yGs9B210ieniQZhJNb-ifD-4UDJvRMZvgO1ysqheSHG6D0GUT3BKoNNY-BMo3UhJkOSXYXL3J2XJL9AHaYvMCYqJ5yB2aOwt61jMGQuEw8YwZQ_I-HfGJubeTBPceMyEBaFYVLIaz9CpmNcwmn5nenwbYt4UG8-udFLWTGoR1KW8vmy9gDf2ZfNXy.oLM4VDoe-nK6XoMrwyK2Xw&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition button-hover">
+                    <button onclick="playGame('fire-in-the-hole-xbomb', 'Fire in the Hole xBomb', 'https://launcher-eu1.gsplauncher.de/games/encrypted/launcher?payload=QTEyOEdDTQ.x_hEOruODoRklQYEcCdXVVBqgl-tG09bFH3A5WZLVm796trnCv_K-hWm3Pk.tTWbY8RJaWBKM3fL.aIvf4iXpVLOtLFVbeB97akO8jOfai3tTGcUN4pBLjr2nYuSoVfKSEMmoKfGUKWAdB3O-BuoOSyHzTZvrQZW0e_QctiKX3t0ecyZnoS1bOAGRzMhPiOezcamGsNmGnzraXylDDbSamATo54lcYIPiUd5KV0DRBPMu8RT40gS6uSWvuJR1--f9BxSs4-kvoB6w8puJvjD-AHgf2sV_RkJOD_yk9X8k9V4y2_ObR5mMuMztBOcs2nuSKfgBBsB-e50q9gotGnDRC4g4YBnC_bzznGqGHP1Oso8LNFOFdgPz5TYpW_0yGs9B210ieniQZhJNb-ifD-4UDJvRMZvgO1ysqheSHG6D0GUT3BKoNNY-BMo3UhJkOSXYXL3J2XJL9AHaYvMCYqJ5yB2aOwt61jMGQuEw8YwZQ_I-HfGJubeTBPceMyEBaFYVLIaz9CpmNcwmn5nenwbYt4UG8-udFLWTGoR1KW8vmy9gDf2ZfNXy.oLM4VDoe-nK6XoMrwyK2Xw&')" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-2 rounded font-bold transition">
                         🎮 PLAY NOW
                     </button>
                 </div>
             </div>
-
-           
         </div>
     </section>
 
     <!-- Game Modal -->
-    <div id="gameModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden overflow-hidden">
-        <div class="bg-gray-800 rounded-lg w-full max-w-6xl mx-4 h-5/6 border-2 border-dynasty-gold card-hover flex flex-col">
+    <div id="gameModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 rounded-lg w-full max-w-6xl mx-4 h-5/6 flex flex-col">
             <div class="flex justify-between items-center p-4 border-b border-gray-700">
                 <h3 id="gameTitle" class="text-xl font-bold text-dynasty-gold"></h3>
                 <button onclick="closeGame()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
             </div>
-            <div class="flex-1 p-4 overflow-hidden">
-                <div id="gameFrame" class="w-full h-[calc(100%-4rem)] bg-gray-900 rounded overflow-hidden">
-                    <div class="text-center h-full flex items-center justify-center">
-                        <div>
-                            <div class="text-6xl mb-4">🎰</div>
-                            <h4 class="text-2xl font-bold text-dynasty-gold mb-2">Game Loading...</h4>
-                            <p class="text-gray-400">Preparing your gaming experience</p>
-                            <div class="mt-4">
-                                <div class="animate-spin w-8 h-8 border-4 border-dynasty-gold border-t-transparent rounded-full mx-auto"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="p-4 flex-1">
+                <iframe id="gameFrame" class="w-full h-full bg-gray-900 rounded" src=""></iframe>
             </div>
         </div>
     </div>
 
     <!-- Login Required Modal -->
     <div id="loginRequiredModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 border-2 border-dynasty-gold card-hover">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 border-2 border-dynasty-gold">
             <h2 class="text-2xl font-bold text-dynasty-gold mb-4">Login Required</h2>
             <p class="mb-6">You need to login to play our premium slot games!</p>
             <div class="flex gap-4">
-                <a href="/login/" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-6 py-2 rounded font-bold flex-1 text-center button-hover">Login</a>
-                <button onclick="closeLoginModal()" class="bg-gray-600 hover:bg-gray-500 px-6 py-2 rounded flex-1 button-hover">Cancel</button>
+                <a href="/login/" class="bg-dynasty-gold hover:bg-yellow-400 text-black px-6 py-2 rounded font-bold flex-1 text-center">Login</a>
+                <button onclick="closeLoginModal()" class="bg-gray-600 hover:bg-gray-500 px-6 py-2 rounded flex-1">Cancel</button>
             </div>
         </div>
     </div>
 
     <!-- Registration Modal -->
     <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 w-full border-2 border-dynasty-gold card-hover">
+        <div class="bg-gray-800 p-8 rounded-lg max-w-md mx-4 w-full border-2 border-dynasty-gold">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold text-dynasty-gold">Join SlotDynasty</h2>
                 <button onclick="closeRegisterModal()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
@@ -306,15 +304,15 @@
             <form id="registerForm" onsubmit="register(event)">
                 <div class="mb-4">
                     <label class="block text-sm font-bold mb-2">Username</label>
-                    <input type="text" id="regUsername" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+                    <input type="text" id="regUsername" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
                 </div>
                 <div class="mb-4">
                     <label class="block text-sm font-bold mb-2">Email</label>
-                    <input type="email" id="regEmail" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+                    <input type="email" id="regEmail" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
                 </div>
                 <div class="mb-6">
                     <label class="block text-sm font-bold mb-2">Password</label>
-                    <input type="password" id="regPassword" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+                    <input type="password" id="regPassword" required class="w-full px-3 py-2 bg-gray-700 border-2 border-dynasty-gold rounded focus:outline-none focus:ring-2 focus:ring-dynasty-gold">
                 </div>
                 <div class="mb-6">
                     <label class="flex items-center">
@@ -322,7 +320,7 @@
                         <span class="text-sm">I agree to the <a href="/terms/" class="text-dynasty-gold underline">Terms of Service</a> and <a href="/privacy/" class="text-dynasty-gold underline">Privacy Policy</a></span>
                     </label>
                 </div>
-                <button type="submit" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-3 rounded font-bold text-lg transition button-hover">
+                <button type="submit" class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-3 rounded font-bold text-lg transition">
                     🎁 REGISTER & GET 5,000 FREE COINS!
                 </button>
             </form>
