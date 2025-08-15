@@ -205,3 +205,19 @@ input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hove
         padding-right: 1rem;
     }
 }
+
+.logo {
+    height: 75px; 
+    width: auto; 
+    margin: 0 auto; 
+    display: block; 
+}
+#gameModal {
+    margin-top: 80px; /* Creates gap below the sticky nav */
+    z-index: 101; /* Ensures modal stays above header */
+}
+@media (max-width: 767px) {
+    #gameModal {
+        margin-top: 60px; /* Smaller gap for mobile */
+    }
+}
