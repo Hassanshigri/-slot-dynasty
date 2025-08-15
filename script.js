@@ -29,13 +29,18 @@ function checkUserStatus() {
     if (user) {
         document.getElementById('loggedOutSection').classList.add('hidden');
         document.getElementById('loggedInSection').classList.remove('hidden');
+        document.getElementById('mobileLoggedOutSection').classList.add('hidden');
+        document.getElementById('mobileLoggedInSection').classList.remove('hidden');
         document.getElementById('userWelcome').textContent = `Welcome, ${user.username} • ${user.coins.toLocaleString()} Coins`;
+        document.getElementById('mobileUserWelcome').textContent = `Welcome, ${user.username} • ${user.coins.toLocaleString()} Coins`;
         if (window.location.pathname === '/login/') {
             window.location.href = '/games/';
         }
     } else {
         document.getElementById('loggedOutSection').classList.remove('hidden');
         document.getElementById('loggedInSection').classList.add('hidden');
+        document.getElementById('mobileLoggedOutSection').classList.remove('hidden');
+        document.getElementById('mobileLoggedInSection').classList.add('hidden');
     }
 }
 
@@ -186,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
             mobileMenu.classList.toggle('hidden');
         });
     }
