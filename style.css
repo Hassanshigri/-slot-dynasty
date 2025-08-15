@@ -19,11 +19,11 @@
 .input-hover:hover {
     transform: scale(1.02);
     box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
-    border-color: #FFFF99; /* Lighter gold on hover */
+    border-color: #FFFF99; 
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .button-hover:hover {
-    background-color: #FFFF99; /* Lighter gold for hover */
+    background-color: #FFFF99; 
     transform: scale(1.05);
     box-shadow: 0 0 18px rgba(255, 215, 0, 0.8);
     transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -31,7 +31,7 @@
 .card-hover:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
-    border-color: #FFFF99; /* Lighter gold on hover */
+    border-color: #FFFF99; 
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
@@ -58,7 +58,7 @@ nav .hover:text-dynasty-gold:hover::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #FFD700; /* dynasty-gold */
+    background-color: #FFD700; 
     transition: transform 0.3s ease;
     transform: scaleX(1);
     transform-origin: bottom right;
@@ -71,7 +71,7 @@ nav .hover:text-dynasty-gold::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #FFD700; /* dynasty-gold */
+    background-color: #FFD700; 
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
@@ -126,31 +126,31 @@ nav {
 
 /* Global Theme Enhancements */
 body {
-    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%); /* Apply .gradient-bg globally */
+    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%); 
 }
 
 /* Apply gradient background to all sections */
 section {
-    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%); /* Consistent .gradient-bg */
+    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%); 
     position: relative;
     overflow: hidden;
 }
 
 /* Add glow to all major headings */
 h2, h3 {
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Subtle glow effect */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /
 }
 
 /* Style all cards consistently */
 .bg-gray-800 {
-    background-color: #2D3748; /* Slightly lighter for contrast */
-    border: 1px solid #FFFF99; /* Lighter gold border */
+    background-color: #2D3748; 
+    border: 1px solid #FFFF99; 
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .bg-gray-800:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3); /* Apply .card-hover */
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3); 
     border-color: #FFFF99;
 }
 
@@ -160,7 +160,7 @@ button:not(#mobileMenuBtn), a.bg-dynasty-gold, a.bg-dynasty-purple {
 }
 
 button:not(#mobileMenuBtn):hover, a.bg-dynasty-gold:hover, a.bg-dynasty-purple:hover {
-    background-color: #FFFF99; /* Apply .button-hover */
+    background-color: #FFFF99; 
     transform: scale(1.05);
     box-shadow: 0 0 18px rgba(255, 215, 0, 0.8);
 }
@@ -174,12 +174,12 @@ button:not(#mobileMenuBtn):hover, a.bg-dynasty-gold:hover, a.bg-dynasty-purple:h
 
 #ageModal .bg-gray-800, #cookieConsent .bg-gray-800, #gameModal .bg-gray-800, #loginRequiredModal .bg-gray-800, #registerModal .bg-gray-800 {
     background-color: #2D3748;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); /* Apply .glow */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); 
 }
 
 /* Footer styling */
 footer {
-    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%); /* Apply .gradient-bg */
+    background: linear-gradient(135deg, #1F2937 0%, #374151 50%, #6B46C1 100%); 
 }
 
 /* Input fields for forms */
@@ -191,14 +191,14 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.4); /* Apply .input-hover */
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
     border-color: #FFFF99;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 767px) {
     h2 {
-        font-size: 2.25rem; /* Slightly smaller for mobile */
+        font-size: 2.25rem; 
     }
     .container {
         padding-left: 1rem;
