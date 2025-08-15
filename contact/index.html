@@ -66,141 +66,141 @@
    <!-- Header -->
     <header class="bg-gray-800 shadow-lg">
       <nav class="container mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-2">
-            <a href="/">
-              <img
-                src="/assets/games/logo.png"
-                alt="SlotDynasty Logo"
-                class="h-[90px] w-auto"
-              />
-            </a>
-          </div>
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <a href="/">
+        <img
+          src="/assets/games/logo.png"
+          alt="SlotDynasty Logo"
+          class="h-[110px] w-auto md:h-[130px]"
+        />
+      </a>
+    </div>
 
-          <div class="hidden md:flex space-x-6">
-            <a
-              href="/"
-              class="hover:text-dynasty-gold transition"
-              data-page="home"
-              >Home</a
-            >
-            <a
-              href="/games/"
-              class="hover:text-dynasty-gold transition"
-              data-page="games"
-              >Games</a
-            >
-            <a
-              href="/contact/"
-              class="hover:text-dynasty-gold transition"
-              data-page="contact"
-              >Contact</a
-            >
-            <a
-              href="/responsible-gaming/"
-              class="hover:text-dynasty-gold transition"
-              data-page="responsible-gaming"
-              >Responsible Gaming</a
-            >
-          </div>
+    <div class="hidden md:flex space-x-6">
+      <a
+        href="/"
+        class="hover:text-dynasty-gold transition"
+        data-page="home"
+        >Home</a
+      >
+      <a
+        href="/games/"
+        class="hover:text-dynasty-gold transition"
+        data-page="games"
+        >Games</a
+      >
+      <a
+        href="/contact/"
+        class="hover:text-dynasty-gold transition"
+        data-page="contact"
+        >Contact</a
+      >
+      <a
+        href="/responsible-gaming/"
+        class="hover:text-dynasty-gold transition"
+        data-page="responsible-gaming"
+        >Responsible Gaming</a
+      >
+    </div>
 
-          <div id="userSection" class="hidden md:flex items-center space-x-4">
-            <div id="loggedOutSection">
-              <a
-                href="/login/"
-                class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition"
-                >Login</a
-              >
-              <button
-                onclick="showRegisterModal()"
-                class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition ml-2"
-              >
-                Register
-              </button>
-            </div>
-            <div id="loggedInSection" class="hidden">
-              <span id="userWelcome" class="text-dynasty-gold font-bold"></span>
-              <button
-                onclick="logout()"
-                class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm ml-4"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
+    <div id="userSection" class="hidden md:flex items-center space-x-4">
+      <div id="loggedOutSection">
+        <a
+          href="/login/"
+          class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition button-hover"
+          >Login</a
+        >
+        <button
+          onclick="showRegisterModal()"
+          class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition button-hover ml-2"
+        >
+          Register
+        </button>
+      </div>
+      <div id="loggedInSection" class="hidden">
+        <span id="userWelcome" class="text-dynasty-gold font-bold"></span>
+        <button
+          onclick="logout()"
+          class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm ml-4 button-hover"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
 
-          <!-- Mobile Menu Button -->
-          <button id="mobileMenuBtn" class="md:hidden">
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuBtn" class="md:hidden">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden mt-4 hidden">
+    <div class="flex flex-col space-y-2">
+      <a
+        href="/"
+        class="hover:text-dynasty-gold transition py-2"
+        data-page="home"
+        >Home</a
+      >
+      <a
+        href="/games/"
+        class="hover:text-dynasty-gold transition py-2"
+        data-page="games"
+        >Games</a
+      >
+      <a
+        href="/contact/"
+        class="hover:text-dynasty-gold transition py-2"
+        data-page="contact"
+        >Contact</a
+      >
+      <a
+        href="/responsible-gaming/"
+        class="hover:text-dynasty-gold transition py-2"
+        data-page="responsible-gaming"
+        >Responsible Gaming</a
+      >
+      <div id="mobileUserSection" class="flex flex-col space-y-2 pt-2">
+        <div id="mobileLoggedOutSection">
+          <a
+            href="/login/"
+            class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition button-hover text-center"
+            >Login</a
+          >
+          <button
+            onclick="showRegisterModal()"
+            class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition button-hover text-center"
+          >
+            Register
           </button>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden mt-4 hidden">
-          <div class="flex flex-col space-y-2">
-            <a
-              href="/"
-              class="hover:text-dynasty-gold transition py-2"
-              data-page="home"
-              >Home</a
-            >
-            <a
-              href="/games/"
-              class="hover:text-dynasty-gold transition py-2"
-              data-page="games"
-              >Games</a
-            >
-            <a
-              href="/contact/"
-              class="hover:text-dynasty-gold transition py-2"
-              data-page="contact"
-              >Contact</a
-            >
-            <a
-              href="/responsible-gaming/"
-              class="hover:text-dynasty-gold transition py-2"
-              data-page="responsible-gaming"
-              >Responsible Gaming</a
-            >
-            <div id="mobileUserSection" class="flex flex-col space-y-2 pt-2">
-              <div id="mobileLoggedOutSection">
-                <a
-                  href="/login/"
-                  class="bg-dynasty-purple hover:bg-purple-700 px-4 py-2 rounded font-bold transition text-center"
-                  >Login</a
-                >
-                <button
-                  onclick="showRegisterModal()"
-                  class="bg-dynasty-gold hover:bg-yellow-400 text-black px-4 py-2 rounded font-bold transition text-center"
-                >
-                  Register
-                </button>
-              </div>
-              <div id="mobileLoggedInSection" class="hidden">
-                <span id="mobileUserWelcome" class="text-dynasty-gold font-bold text-center"></span>
-                <button
-                  onclick="logout()"
-                  class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm text-center w-full"
-                >
-                  Logout
-                </button>
-              </div>
-            </div>
-          </div>
+        <div id="mobileLoggedInSection" class="hidden">
+          <span id="mobileUserWelcome" class="text-dynasty-gold font-bold text-center"></span>
+          <button
+            onclick="logout()"
+            class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm text-center w-full button-hover"
+          >
+            Logout
+          </button>
         </div>
-      </nav>
+      </div>
+    </div>
+  </div>
+</nav>
     </header>
     <!-- Contact Form Section -->
 <section class="py-16 gradient-bg">
