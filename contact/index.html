@@ -203,41 +203,46 @@
       </nav>
     </header>
     <!-- Contact Form Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-4">
-            <div class="max-w-lg mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-8 text-dynasty-gold">Contact Us</h2>
-                <p class="text-center text-gray-300 mb-12">Have questions or need support? Reach out to our team, and we'll get back to you soon!</p>
-                
-                <form id="contactForm" onsubmit="submitContactForm(event)">
-                    <div class="mb-6">
-                        <label class="block text-sm font-bold mb-2" for="contactName">Full Name</label>
-                        <input type="text" id="contactName" required 
-                               class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-sm font-bold mb-2" for="contactEmail">Email Address</label>
-                        <input type="email" id="contactEmail" required 
-                               class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-sm font-bold mb-2" for="contactSubject">Subject</label>
-                        <input type="text" id="contactSubject" required 
-                               class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-sm font-bold mb-2" for="contactMessage">Message</label>
-                        <textarea id="contactMessage" required 
-                                  class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold h-32 resize-none input-hover"></textarea>
-                    </div>
-                    <button type="submit" 
-                            class="w-full bg-dynasty-gold hover:bg-yellow-400 text-black py-3 rounded-lg font-bold text-lg transition button-hover">
-                        📧 SEND MESSAGE
-                    </button>
-                </form>
-            </div>
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-4">
+    <div class="max-w-lg mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-dynasty-gold glow">Contact Us</h2>
+      <p class="text-center text-gray-300 text-lg md:text-xl mb-12">
+        Got questions or need assistance? Our 24/7 support team at SlotDynasty is here to help you maximize your gaming experience. Reach out, and we’ll respond within 24 hours!
+      </p>
+      
+      <form id="contactForm" onsubmit="submitContactForm(event)" class="bg-gray-800 p-6 rounded-lg card-hover">
+        <div class="mb-6">
+          <label class="block text-sm font-bold mb-2 text-dynasty-gold" for="contactName">Full Name</label>
+          <input type="text" id="contactName" required 
+                 class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
         </div>
-    </section>
+        <div class="mb-6">
+          <label class="block text-sm font-bold mb-2 text-dynasty-gold" for="contactEmail">Email Address</label>
+          <input type="email" id="contactEmail" required 
+                 class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-bold mb-2 text-dynasty-gold" for="contactSubject">Subject</label>
+          <input type="text" id="contactSubject" required 
+                 class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold input-hover">
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-bold mb-2 text-dynasty-gold" for="contactMessage">Message</label>
+          <textarea id="contactMessage" required 
+                    class="w-full px-4 py-3 bg-gray-700 border-2 border-dynasty-gold rounded-lg focus:outline-none focus:ring-2 focus:ring-dynasty-gold h-32 resize-none input-hover"></textarea>
+        </div>
+        <button type="submit" 
+                class="w-full bg-dynasty-gold text-black py-3 rounded-lg font-bold text-lg transition button-hover glow">
+          📧 SEND MESSAGE
+        </button>
+      </form>
+      <div class="text-center mt-8">
+        <p class="text-gray-400 text-sm">Prefer direct contact? Reach us at <a href="mailto:info@slotdynasty.com" class="text-dynasty-gold underline hover:text-yellow-400">info@slotdynasty.com</a> or call <span class="text-dynasty-gold">+1 (555) 123-4567</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Registration Modal -->
     <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
