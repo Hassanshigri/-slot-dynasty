@@ -91,6 +91,11 @@ nav .hover:text-dynasty-gold::after {
     overflow: hidden;
 }
 
+.verification {
+    justify-content: center; /* aligns buttons in the center */
+    align-items: center;    /* vertically center */
+}
+
 #mobileMenu.active {
     max-height: 500px; /* Adjust based on menu content */
     opacity: 1;
@@ -138,7 +143,7 @@ section {
 
 /* Add glow to all major headings */
 h2, h3 {
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 /* Style all cards consistently */
@@ -195,6 +200,18 @@ input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hove
     border-color: #FFFF99;
 }
 
+/* Updated logo size */
+.logo {
+    height: 85px; /* Slightly reduced from 90px to balance slimmer header */
+    width: auto; 
+    margin: 0 auto; 
+    display: block; 
+}
+
+#gameModal {
+    margin-top: 80px; /* Creates gap below the sticky nav */
+    z-index: 101; /* Ensures modal stays above header */
+}
 
 @media (max-width: 767px) {
     h2 {
@@ -204,19 +221,6 @@ input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hove
         padding-left: 1rem;
         padding-right: 1rem;
     }
-}
-
-.logo {
-    height: 75px; 
-    width: auto; 
-    margin: 0 auto; 
-    display: block; 
-}
-#gameModal {
-    margin-top: 80px; /* Creates gap below the sticky nav */
-    z-index: 101; /* Ensures modal stays above header */
-}
-@media (max-width: 767px) {
     #gameModal {
         margin-top: 60px; /* Smaller gap for mobile */
     }
