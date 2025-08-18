@@ -65,7 +65,13 @@
 
    <!-- Header -->
     <header class="bg-gray-800 shadow-lg">
-      <nav class="container mx-auto px-4 py-4">
+      <div
+        class="container mx-auto px-4 py-0.5 text-center text-dynasty-gold font-bold text-sm"
+      >
+        Social Casino - Free-to-play fun only. No real money, prizes, or
+        gambling involved.
+      </div>
+      <nav class="container mx-auto px-4 py-1">
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-2">
             <a href="/">
@@ -189,7 +195,10 @@
                 </button>
               </div>
               <div id="mobileLoggedInSection" class="hidden">
-                <span id="mobileUserWelcome" class="text-dynasty-gold font-bold text-center"></span>
+                <span
+                  id="mobileUserWelcome"
+                  class="text-dynasty-gold font-bold text-center"
+                ></span>
                 <button
                   onclick="logout()"
                   class="bg-gray-600 hover:bg-gray-500 px-4 py-2 rounded text-sm text-center w-full"
